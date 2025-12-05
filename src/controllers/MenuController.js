@@ -68,7 +68,7 @@ export const AddMenu = async(req, res)=>{
     }
 
     dataMenus.push(requestData.data)
-    await fs.writeFile(jsonFileMenu, JSON.stringify(dataMenus, null, 2));
+    await fs.writeFile(jsonFileMenu, JSON.stringify(dataMenus));
     await fs.writeFile(jsonFileFolder+"/"+requestData.data.name+".json", "");
     return res.json(new ApiResponse(200, "/api/v1/menu", "POST", new MenuResponse(true, "Đã thêm", dataMenus))) 
 }
@@ -93,7 +93,7 @@ export const DeleteMenu = async(req, res)=>{
         const index = dataMenus.findIndex(i => i.name == requestName)
         if (index !== -1) {
             dataMenus.splice(index, 1);
-            await fs.writeFile(jsonFileMenu, JSON.stringify(dataMenus, null, 2));
+            await fs.writeFile(jsonFileMenu, JSON.stringify(dataMenus));
             await fs.unlink(jsonFileFolder+"/"+requestName+".json")
             return res.json(new ApiResponse(200, req.originalUrl, req.method, new MenuResponse(false, "Đã xóa.", dataMenus))) 
         }else{

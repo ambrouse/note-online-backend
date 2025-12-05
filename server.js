@@ -5,6 +5,7 @@ import AuthRouter from './src/router/AuthRouter.js'
 import NoteRouter from './src/router/NoteRouter.js'
 import cookieParser from 'cookie-parser';
 import {Limiter} from './src/services/SpamRequest.js'
+import cors from 'cors'
 
 
 dotenv.config();
@@ -18,7 +19,12 @@ app.use(Limiter);
 app.use(express.json());
 // Middleware parse cookie
 app.use(cookieParser());
-
+// setup cors
+app.use(cors({
+  origin: "http://localhost:5173",   // hoặc domain FE của bạn
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true                 // cho phép cookie/token
+}));
 
 // router 
 app.use('/api/v1/note-app/menu', MenuRouter);

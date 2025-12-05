@@ -21,11 +21,11 @@ export const Login = (req, res)=>{
     }
 
     if(NAME!=loginRequest.data.name){
-        return res.json(new ApiResponse(200,req.originalUrl, req.method,new LoginResponse(false, "Sai tên đăng nhập.")))
+        throw new ApiResponse(400,req.originalUrl, req.method,"Sai tên đăng nhập.")
     }
     
     if(PASS!=loginRequest.data.pass){
-        return res.json(new ApiResponse(200,req.originalUrl, req.method,new LoginResponse(false, "Sai mật khẩu.")))
+        throw new ApiResponse(400,req.originalUrl, req.method, "Sai mật khẩu.")
     }
     
     try{
