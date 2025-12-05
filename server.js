@@ -13,6 +13,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.set('trust proxy', 1);
 // Áp dụng giới hạn request cho tất cả route
 app.use(Limiter);
 // Middleware parse JSON
