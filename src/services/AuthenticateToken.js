@@ -17,9 +17,8 @@ function VerifyTokenService(tokenUser){
 
 
 export const AuthenticateToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  console.log(authHeader)
   const token = req.cookies.token;
+  console.log(token)
   if (!token) throw new ApiResponse(401,req.originalUrl,req.method,"Chưa đăng nhập.")
 
   if(!VerifyTokenService(token)){
