@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 // setup cors
 app.use(cors({
-  origin: "https://ambrouse.github.io/note-online-frontend",   // hoặc domain FE của bạn
+  origin: "https://ambrouse.github.io",   // hoặc domain FE của bạn
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true                 // cho phép cookie/token
 }));
