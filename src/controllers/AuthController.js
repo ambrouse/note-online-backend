@@ -33,15 +33,15 @@ export const Login = (req, res)=>{
             id: "root123",
             username: "BaoNguyen"
         };
-        const token = jwt.sign(payload, SECRETKEY, { expiresIn: "1h" });
-        // const token = jwt.sign(payload, SECRETKEY, { expiresIn: "365d" });
+        // const token = jwt.sign(payload, SECRETKEY, { expiresIn: "1h" });
+        const token = jwt.sign(payload, SECRETKEY, { expiresIn: "365d" });
 
         res.cookie('token', token, {
             httpOnly: true,   // JavaScript không đọc được
-            secure: false,    // true nếu dùng https
+            secure: true,    // true nếu dùng https
             sameSite: 'strict',
-            maxAge: 60 * 60 * 1000 // 1 giờ
-            // maxAge: 365 * 24 * 60 * 60 * 1000 // 1 năm
+            // maxAge: 60 * 60 * 1000 // 1 giờ
+            maxAge: 365 * 24 * 60 * 60 * 1000 // 1 năm
         });
         return res.json(new ApiResponse(200,req.originalUrl, req.method,new LoginResponse(false, "Đăng nhập thành công")))
     }catch(err){
