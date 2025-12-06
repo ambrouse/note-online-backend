@@ -22,7 +22,8 @@ app.use(express.json());
 app.use(cookieParser());
 // setup cors
 app.use(cors({
-  origin: "https://ambrouse.github.io",   // hoặc domain FE của bạn
+  origin: "https://ambrouse.github.io",   
+  // origin: "http://localhost:5173",   
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true                 // cho phép cookie/token
 }));

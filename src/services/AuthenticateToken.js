@@ -7,7 +7,6 @@ function VerifyTokenService(tokenUser){
       const decoded = jwt.verify(tokenUser, SECRETKEY);
         return true
     } catch (err) {
-      console.log(err)
         return false
     }
 }

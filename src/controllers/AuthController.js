@@ -3,7 +3,6 @@ import ApiResponse from '../api/ApiResponse.js';
 import {LoginRequest} from '../request/LoginRequest.js'
 import LoginResponse from '../response/LoginResponse.js'
 
-
 export const Login = (req, res)=>{
     /*
         Hàm đăng nhập
@@ -41,7 +40,7 @@ export const Login = (req, res)=>{
             sameSite: 'None',
             maxAge: 365 * 24 * 60 * 60 * 1000 // 1 năm
         });
-        return res.json(new ApiResponse(200,req.originalUrl, req.method,new LoginResponse(false, "Đăng nhập thành công")))
+        return res.json(new ApiResponse(200,req.originalUrl, req.method,new LoginResponse(true, "Đăng nhập thành công")))
     }catch(err){
         console.log(err)
     }
